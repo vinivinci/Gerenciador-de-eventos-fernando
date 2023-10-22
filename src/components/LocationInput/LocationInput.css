@@ -1,0 +1,17 @@
+.location-input {
+    background-color: black;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.location-input label {
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.location-input .leaflet-container {
+    border: 2px solid white;
+}

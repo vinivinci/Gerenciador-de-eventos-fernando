@@ -1,0 +1,31 @@
+/* src/components/DateInput/DateInput.css */
+.date-input {
+    background-color: black;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.date-input label {
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.date-input .react-datepicker-wrapper {
+    width: 100%;
+}
+
+.date-input .react-datepicker__input-container {
+    width: 100%;
+}
+
+.date-input .react-datepicker__input-container input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    color: black;
+    background-color: white;
+}

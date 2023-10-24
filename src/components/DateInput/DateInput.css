@@ -1,20 +1,19 @@
 /* src/components/DateInput/DateInput.css */
 .date-input {
-    background-color: black;
     border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 10px;
+    margin-right: 20px;
+    width: 100%;
 }
 
 .date-input label {
-    color: white;
+    color:black;
     display: block;
-    margin-bottom: 5px;
     font-weight: bold;
 }
 
 .date-input .react-datepicker-wrapper {
     width: 100%;
+      
 }
 
 .date-input .react-datepicker__input-container {
@@ -23,9 +22,19 @@
 
 .date-input .react-datepicker__input-container input {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
+  
     border-radius: 4px;
     border: none;
-    color: black;
     background-color: white;
+}
+
+.date-input .react-datepicker__input-container input:focus {
+    outline: none;
+}
+.date-picker{
+    border: 1px solid #ccc !important;
+}
+.react-datepicker-popper{
+    z-index: 1000;
 }

@@ -3,14 +3,18 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import EventForm from '../../components/EventForm';
+import './CreateEditEvent.css'
 
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 interface Event {
     id?: number;
     title: string;
+    description: string;
     date: string;
     location: string;
+    locationCoords?: string;
 }
 
 
@@ -32,12 +36,16 @@ const CreateEditEventPage: React.FC = () => {
     }, [id]);
 
     const handleSuccess = () => {
+        toast.success('Evento salvo com sucesso!');
         navigate('/');
     };
 
     return (
         <Layout>
-            <EventForm event={event} onSuccess={handleSuccess} />
+            <div className='container'>
+                <EventForm event={event} onSuccess={handleSuccess} />
+            </div>
+
         </Layout>
     );
 };

@@ -1,7 +1,5 @@
-// src/pages/HomePage.tsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import NavBar from '../../components/NavBar';
 import EventCard from '../../components/EventCard';
 import './HomePage.css';
 import Layout from '../../components/Layout';

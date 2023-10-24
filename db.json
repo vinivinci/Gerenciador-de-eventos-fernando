@@ -1,28 +1,12 @@
 {
   "events": [
     {
-      "title": "Festa da Julia",
-      "description": "Vai ser uma festa de princesa. Leva apolos",
-      "date": "24/10/2023",
-      "location": "Rua 19, Setor Central, Goiânia",
-      "locationCoords": "-16.6769, -49.2534",
-      "id": 1
-    },
-    {
-      "title": "Festa na praça Civica",
-      "description": "Teste",
-      "date": "24/10/2023",
-      "location": "Praça Doutor Pedro Ludovico Teixeira, Setor Central, Goiânia",
-      "locationCoords": "-16.68064967960721, -49.255850315094",
-      "id": 2
-    },
-    {
-      "title": "Festa de julia",
-      "description": "Festa de princesa com cachorros. ",
-      "date": "22/11/2023",
-      "location": "Rua 38, Setor Marista, Goiânia",
-      "locationCoords": "-16.69349594940319, -49.264084696769714",
-      "id": 3
+      "title": "Festa no ap",
+      "description": "Festa na casa do latina. ps levar cerveja",
+      "date": "30/11/2023",
+      "location": "Rua 89 A, Setor Sul, Goiânia",
+      "locationCoords": "-16.692364388293836, -49.254004955291755",
+      "id": 4
     }
   ]
 }

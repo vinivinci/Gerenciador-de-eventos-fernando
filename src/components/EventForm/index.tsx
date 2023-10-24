@@ -114,7 +114,7 @@ const EventForm: React.FC<EventFormProps> = ({ event, onSuccess }) => {
 
             />
             <button type="submit" className="form-button">
-                Submit
+                Criar Evento
             </button>
         </form>
     );

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
 import L from 'leaflet';
-
 
 interface MapComponentProps {
     initialPosition: { lat: number, lng: number };
@@ -16,10 +15,18 @@ interface MapComponentProps {
 interface DraggableMarkerProps {
     onPositionChange: (newPosition: { lat: number, lng: number }) => void;
     onAddressChange?: (newAddress: string) => void;
+    initialPosition: { lat: number, lng: number };
 }
 
-const DraggableMarker: React.FC<DraggableMarkerProps> = ({ onPositionChange, onAddressChange }) => {
-    const [position, setPosition] = useState({ lat: -16.6769, lng: -49.2534 });
+const DraggableMarker: React.FC<DraggableMarkerProps> = ({ onPositionChange, onAddressChange, initialPosition }) => {
+    const [position, setPosition] = useState(initialPosition);
+    const map = useMapEvents({
+        click(e) {
+            setPosition(e.latlng);
+            handlePositionChange(e.latlng);
+        },
+    });
+
     const handlePositionChange = async (newPosition: { lat: number, lng: number }) => {
         const provider = new OpenStreetMapProvider({ params: { addressdetails: 1 } });
         const results = await provider.search({ query: `${newPosition.lat}, ${newPosition.lng}` });
@@ -33,12 +40,12 @@ const DraggableMarker: React.FC<DraggableMarkerProps> = ({ onPositionChange, onA
                 onAddressChange(formattedAddress);
             }
         }
-        onPositionChange(newPosition)
+        onPositionChange(newPosition);
     };
 
     useEffect(() => {
-        handlePositionChange(position);
-    }, []);
+        setPosition(initialPosition);
+    }, [initialPosition]);
 
     const customIcon = L.icon({
         iconUrl: '/marker-icon.png',
@@ -47,8 +54,11 @@ const DraggableMarker: React.FC<DraggableMarkerProps> = ({ onPositionChange, onA
         popupAnchor: [0, -38]
     });
     return position === null ? null : (
-        <Marker icon={customIcon} position={position} draggable={true} />
-
+        <Marker
+            icon={customIcon}
+            position={position}
+            draggable={true}
+        />
     );
 };
 
@@ -59,7 +69,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ initialPosition, onPosition
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <DraggableMarker onPositionChange={onPositionChange} onAddressChange={onAddressChange} />
+            <DraggableMarker onPositionChange={onPositionChange} onAddressChange={onAddressChange} initialPosition={initialPosition} />
         </MapContainer>
     );
 };

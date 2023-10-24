@@ -1,41 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import EventCard from '../../components/EventCard';
+import React from 'react';
 import './HomePage.css';
 import Layout from '../../components/Layout';
+import { useNavigate } from 'react-router-dom';
 
-interface Event {
-    id: number;
-    title: string;
-    date: string;
-    location: string;
-}
 
-const HomePage: React.FC = () => {
-    const [events, setEvents] = useState<Event[]>([]);
-
-    useEffect(() => {
-        axios.get('http://localhost:8089/events')
-            .then(response => {
-                setEvents(response.data);
-            })
-            .catch(error => {
-                console.error('There was an error fetching the events!', error);
-            });
-    }, []);
+const HomePage = () => {
+    const navigate = useNavigate();
 
     return (
         <Layout>
-            <button className="create-button">Criar Novo Evento</button>
-            <div className="events-list">
-                {events.map(event => (
-                    <EventCard
-                        key={event.id}
-                        title={event.title}
-                        date={event.date}
-                        location={event.location}
-                    />
-                ))}
+            <div className="background-image"></div>
+            <div className="home-content">
+                <h1 className="home-title">"Eventualmente Seu"</h1>
+                <p className="home-subtitle">O sistema perfeito para você gerenciar seus eventos.</p>
+                <p className="home-invitation">Venha descobrir como tornar seus eventos ainda mais inesquecíveis com a nossa plataforma. Organize, gerencie e aproveite ao máximo cada momento.</p>
+                <button onClick={() => navigate('/create-event')} className="create-event-btn">Criar Evento</button>
             </div>
         </Layout>
     );

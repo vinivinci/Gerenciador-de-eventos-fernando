@@ -1,4 +1,3 @@
-// src/components/EventForm.tsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import DateInput from '../DateInput';
@@ -53,6 +52,7 @@ const EventForm: React.FC<EventFormProps> = ({ event, onSuccess }) => {
     }
 
     const handleLocationCoordsChange = (newLocation: string) => {
+        console.log('oi')
         setFormData(prevFormData => {
             const updatedFormData = { ...prevFormData, locationCoords: newLocation };
             return updatedFormData;
@@ -61,29 +61,18 @@ const EventForm: React.FC<EventFormProps> = ({ event, onSuccess }) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (formData.title == '' || formData.description == '' || formData.location == '') {
+        if (formData.title === '' || formData.description === '' || formData.location === '') {
             toast.error('Preencha todos os campos!');
             return;
         }
+        axios.post('http://localhost:8089/events', formData)
+            .then(() => {
+                if (onSuccess) onSuccess();
+            })
+            .catch(error => {
+                toast.error('Ocorreu um erro ao salvar o evento!');
+            });
 
-
-        if (event) {
-            axios.put(`http://localhost:8089/events/${event.id}`, formData)
-                .then(() => {
-                    if (onSuccess) onSuccess();
-                })
-                .catch(error => {
-                    console.error('There was an error updating the event!', error);
-                });
-        } else {
-            axios.post('http://localhost:8089/events', formData)
-                .then(() => {
-                    if (onSuccess) onSuccess();
-                })
-                .catch(error => {
-                    console.error('There was an error creating the event!', error);
-                });
-        }
     };
 
     return (

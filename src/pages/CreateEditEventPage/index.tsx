@@ -1,4 +1,3 @@
-// src/pages/CreateEditEventPage.tsx
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout';
@@ -30,14 +29,14 @@ const CreateEditEventPage: React.FC = () => {
                     setEvent(response.data);
                 })
                 .catch(error => {
-                    console.error('There was an error fetching the event!', error);
+                    toast.error(`Houve um erro ao buscar o evento com ID ${id}!`);
                 });
         }
     }, [id]);
 
     const handleSuccess = () => {
         toast.success('Evento salvo com sucesso!');
-        navigate('/');
+        navigate('/show-events');
     };
 
     return (

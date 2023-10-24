@@ -12,12 +12,6 @@ interface DateInputProps {
 }
 
 const DateInput: FC<DateInputProps> = ({ selectedDate, onChange, label }) => {
-    useEffect(() => {
-        if (onChange) {
-            onChange(new Date());
-        }
-    }, [onChange]);
-
     return (
         <div className="date-input">
             <label>{label}</label>

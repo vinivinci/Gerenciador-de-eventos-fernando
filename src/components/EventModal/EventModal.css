@@ -1,0 +1,40 @@
+@import '~leaflet/dist/leaflet.css';
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px; 
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px; 
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.4rem; 
+    cursor: pointer; 
+}
+
+.map-container {
+    margin-top: 25px; 
+}
+
+p {
+    margin-bottom: 20px;
+}
